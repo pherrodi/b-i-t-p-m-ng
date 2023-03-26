@@ -94,3 +94,77 @@ function timSoChanCuoiCung (arr) {
     }
     return soChan ;
 }
+
+// bài 6 đổi chỗ 
+
+document.getElementById('btn-b6').onclick = function () {
+    // input là 2 giá trị vị trí mà người dùng nhập vào.
+    var viTri1 = +document.getElementById('vitri1').value;
+    var viTri2 = +document.getElementById ('vitri2').value;
+    var bienTam = arrNumber[viTri1];
+    arrNumber[viTri1] = arrNumber[viTri2];
+    arrNumber[viTri2] = bienTam;
+    document.getElementById('kq-b6').innerHTML = arrNumber;
+    }
+
+
+// bài 7 sắp xếp tăng dần mảng
+document.getElementById('btn-b7').onclick =  function () {
+document.getElementById('kq-b7').innerHTML = sapXepGiaTriTangDan(arrNumber);
+}
+// hàm
+function sapXepGiaTriTangDan(arr) {
+    // Lặp qua từng phần tử trong mảng
+    for (var i = 0; i < arr.length - 1; i++) {
+      // Tìm phần tử nhỏ nhất trong mảng chưa được sắp xếp
+      var giaTriNhoNhat = i;
+      for (var j = i + 1; j < arr.length; j++) {
+        if (arr[j] < arr[giaTriNhoNhat]) {
+          giaTriNhoNhat = j;
+        }
+      }
+  
+      // Hoán đổi phần tử nhỏ nhất với phần tử đầu tiên chưa được sắp xếp
+      var bienTam = arr[i];
+      arr[i] = arr[giaTriNhoNhat];
+      arr[giaTriNhoNhat] = bienTam;
+    }
+  
+    return arr;
+  }
+
+  // bài 8 tìm số nguyên tố đầu tiên 
+
+  document.getElementById('btn-b8').onclick = function() {
+    document.getElementById('kq-b8').innerHTML = timSoNguyenToDauTien(arrNumber);
+  }
+
+  function timSoNguyenToDauTien(arr) {
+    // Lặp qua từng phần tử trong mảng
+    for (var i = 0; i < arr.length; i++) {
+      var soNguyenTo = true;
+  
+      // Kiểm tra xem phần tử đó có phải là số nguyên tố hay không
+      if (arr[i] < 2) {
+        soNguyenTo = false;
+      } else {
+        for (var j = 2; j <= Math.sqrt(arr[i]); j++) {
+          if (arr[i] % j === 0) {
+            soNguyenTo = false;
+            break;
+          }
+        }
+      }
+  
+      // Nếu phần tử đó là số nguyên tố, trả về giá trị đó
+      if (soNguyenTo) {
+        return arr[i];
+      }
+    }
+  
+    // Nếu không tìm thấy số nguyên tố, trả về
+    return `Không tìm thấy số nguyên tố `;
+  }
+  
+  
+  
