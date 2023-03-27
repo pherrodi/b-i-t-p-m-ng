@@ -166,5 +166,53 @@ function sapXepGiaTriTangDan(arr) {
     return `Không tìm thấy số nguyên tố `;
   }
   
+  // bài 9 : đếm số nguyên 
+
+  document.getElementById('btn-b9').onclick = function () {
+    document.getElementById('kq-b9').innerHTML = demSoNguyen(arrNumber);
+
+  }
+
+  // hàm đếm số nguyên 
+
+  function demSoNguyen (arr) {
+    var dem = 0;
+    for ( var i =0;i<arr.length;i++) {
+      if (Number.isInteger(arr[i])) {
+        dem++;
+      }
+    }
+    return dem;
+  }
   
+
+  // bài 10 : so sánh số âm và số dương
+
+
+  document.getElementById('btn-b10').onclick = function () {
+    document.getElementById('kq-b10').innerHTML = soSanhAmDuong(arrNumber);
+  }
+
+  function soSanhAmDuong (arr) {
+    var demSoAm = 0;
+    var demSoDuong= 0;
+    
+    for (var i=0;i<arr.length;i++) {
+      if (arr[i]>=0) {
+        demSoDuong++;
+      } 
+      else{
+        demSoAm ++;
+      }
+    }
+    if (demSoDuong > demSoAm) {
+      return `số dương nhiều hơn số âm `;
+    }
+    else if (demSoDuong < demSoAm) {
+      return `số âm nhiều hơn số dương `;
+    }
+    else {
+      return ` số âm và số âm bằng nhau `;
+    }
+  }
   
